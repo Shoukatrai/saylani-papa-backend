@@ -55,13 +55,13 @@ export const makeNewOrder = async (req, res) => {
       return res.json({
         status: false,
         message: "Only customer can access?",
-        data: response,
+        data: null,
       });
     }
     const body = {
       ...req.body,
       createdBy: userId,
-      customerName: user.fullName,
+      customerName: user.fullName
     };
 
     const response = await OrderModel.create(body);
