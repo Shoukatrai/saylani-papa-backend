@@ -31,10 +31,10 @@ app.use("/api/order", orderRouter)
 
 
 // delete used otp after 24 hr
-cron.schedule('0 0 * * *', deleteJob);
+// cron.schedule('0 0 * * *', deleteJob);
 
 // delete marketing emails to all verified users
-cron.schedule('0 0 * * *', sendMarketingEmailJob);
+// cron.schedule('0 0 * * *', sendMarketingEmailJob);
 
 
 
