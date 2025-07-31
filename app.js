@@ -46,4 +46,4 @@ app.get("/" , (req , res)=>res.send("SERVER UP"))
 
 dbConnection()
 
-app.listen(process.env.PORT, () => console.log("SERVER STARTED!"));
+app.listen(process.env.PORT, '0.0.0.0' , () => console.log("SERVER STARTED!"));
