@@ -37,13 +37,20 @@ app.use("/api/order", orderRouter)
 // cron.schedule('0 0 * * *', sendMarketingEmailJob);
 
 
-
-
-
-
-
 app.get("/" , (req , res)=>res.send("SERVER UP"))
 
-dbConnection()
+try {
+  await dbConnection();
+  console.log("DB connected");
+} catch (err) {
+  console.error("DB connection failed", err);
+}
 
-app.listen(process.env.PORT, () => console.log("SERVER STARTED!"));
+
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`server running on http://localhost:${PORT}`))
+}
+
+// Vercel deployment
+export default app

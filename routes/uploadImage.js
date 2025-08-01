@@ -8,9 +8,8 @@ const imageRouter = express.Router()
 
 
 
-// imageRouter.post("/upload" ,[checkAuth , upload.any("image")], uploadImageController)
 
-imageRouter.post("/upload", [checkAuth, upload.any("image")], uploadImageController)
+imageRouter.post("/upload", [checkAuth, upload.single("image")], uploadImageController)
 
 
 
