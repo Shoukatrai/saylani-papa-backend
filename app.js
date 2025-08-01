@@ -39,18 +39,6 @@ app.use("/api/order", orderRouter)
 
 app.get("/" , (req , res)=>res.send("SERVER UP"))
 
-try {
-  await dbConnection();
-  console.log("DB connected");
-} catch (err) {
-  console.error("DB connection failed", err);
-}
+dbConnection()
 
-
-if (process.env.NODE_ENV !== 'production') {
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`server running on http://localhost:${PORT}`))
-}
-
-// Vercel deployment
-export default app
+app.listen(process.env.PORT, () => console.log("SERVER STARTED!"));
